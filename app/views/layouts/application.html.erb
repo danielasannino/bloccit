@@ -12,8 +12,9 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
-        <li><%= link_to "Home", index_path %></li>
+        <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Welcome", about_path %></li>
+        <li><%= link_to "Contact", contact_path %></li>
         <li><%= link_to "Follow Me", "https://twitter.com/d_sannino90", class: "social-btn" %></li>
     </ul>
     <%= yield %>
