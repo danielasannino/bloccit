@@ -12,13 +12,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.new
-    question.title = params[:question][:title]
-    question.body = params[:question][:title]
+    @question = Question.new
+    @question.title = params[:question][:title]
+    @question.body = params[:question][:title]
 
-    if question.save
+    if @question.save
       flash[:notice] = "Question was saved."
-      redirect_to question
+      redirect_to @question
     else
       flash[:error] = "There was an error saving the question. Please try again."
       render :new
