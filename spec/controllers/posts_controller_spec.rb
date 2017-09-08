@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+
   let(:my_post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
 
   describe "GET #index" do
@@ -48,15 +49,16 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "POST create" do
-    it "increases the number of Post by 1" do
+    it "increases the number of post by 1" do
       expect{ post :create, params: { post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } } }.to change(Post,:count).by(1)
     end
 
     it "redirects to the new post" do
       post :create, params: { post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
-      expect(response).to redirect_to Post.last
-    end
-  end
+       expect(response).to redirect_to Post.last
+     end
+   end
+
 
   describe "GET edit" do
     it "returns http success" do
@@ -116,4 +118,4 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to redirect_to post_path
     end
   end
-end
+ end
