@@ -59,7 +59,7 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe "POST create" do
-    it "increases the number of questions by 1" do
+    it "increases the number of Questions by 1" do
       expect{ post :create, params: { question: {title: RandomData.random_sentence, body: RandomData.random_paragraph, resolved: false}}}.to change(Question,:count).by(1)
     end
 
@@ -76,23 +76,23 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe "GET edit" do
     it "returns http success" do
-      get :edit, params: { my_question.id }
+      get :edit, params: { id: my_question.id }
       expect(response).to have_http_status(:success)
     end
 
     it "renders the #edit view" do
-      get :edit, params: { my_question.id }
+      get :edit, params: { id: my_question.id }
       expect(response).to render_template :edit
     end
 
-    it "question to be updated to @question" do
-      get :edit, params: { my_question.id }
+    it " assigns question to be updated to @question" do
+      get :edit, params: { id: my_question.id }
 
       question_instance = assigns(:question)
 
       expect(question_instance.id).to eq my_question.id
       expect(question_instance.title).to eq my_question.title
-      expect(question_instance.body).to eq my_questiont.body
+      expect(question_instance.body).to eq my_question.body
     end
   end
 
@@ -106,7 +106,7 @@ RSpec.describe QuestionsController, type: :controller do
       updated_question = assigns(:question)
       expect(updated_question.id).to eq my_question.id
       expect(updated_question.title).to eq new_title
-      expect(updated_post.question).to eq new_body
+      expect(updated_question.body).to eq new_body
     end
 
     it "redirects to the updated question" do
@@ -116,6 +116,13 @@ RSpec.describe QuestionsController, type: :controller do
 
       put :update, params: { id: my_question.id, post: {title: new_title, body: new_body, resolved: true } }
       expect(response).to redirect_to my_question
+   end
+ end
+
+ describe "DELETE destroy" do
+   it "deletes the question" do
+     delete :destroy, params: { id: my_question.id}
+     expect(response).to redirect_to questions_path
    end
  end
 end
