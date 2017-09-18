@@ -22,4 +22,8 @@ module RandomData
     letters.shuffle!
     letters[0,rand(3..8)].join
   end
+
+  def self.random_price(min_value = 1, max_value = 100)
+    rand(min_value..max_value)
+  end
 end
