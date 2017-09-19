@@ -10,7 +10,7 @@ end
 topics = Topic.all
 
 10.times do
-  SponsoredPost.create(
+  SponsoredPost.create!(
     topic: topics.sample,
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph,
