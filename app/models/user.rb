@@ -16,9 +16,8 @@ class User < ApplicationRecord
     if name
       name_array = []
       name.split.each do |name_part|
-        name_array << name_part.capitalize
+        name_array << name_part[0].upcase + name_part[1..-1]
       end
-
       self.name = name_array.join(" ")
     end
   end
