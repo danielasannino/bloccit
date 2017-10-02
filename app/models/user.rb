@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
   before_save :downcase_email, if: :email_present?
   before_save :format_name
 
