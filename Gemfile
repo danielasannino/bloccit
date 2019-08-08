@@ -26,7 +26,7 @@ ruby '2.4.0'
    gem 'rails-controller-testing'
    gem 'pry-rails'
    gem 'shoulda'
-   gem 'factory_girl_rails', '~> 4.0'
+   gem 'factory_bot'
  end
 
  # Use Puma as the app server
